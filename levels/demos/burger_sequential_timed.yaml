@@ -1,0 +1,72 @@
+name: "Burgers: against the clock"
+description: "Work across the pass counter to serve timed orders. The second ticket pays more and has a shorter deadline."
+
+layout: |-
+  | M | VR| -p| - |   | B | -p|
+  |   | 1 |   | - |   | 2 |   |
+  |   |   |   | - |   |   |   |
+  | X |   |   | - |   |   | * |
+
+state:
+  orders:
+    # Plain string: inherits the default reward and time limit.
+    - catalog/food/hamburger
+    # Object form: a high-reward priority order on a tighter clock.
+    - food: catalog/food/hamburger
+      reward: 150
+      time_limit: 10
+
+rules:
+  order_reveal: sequential
+  default_order_time_limit: 20
+
+scoring:
+  default_order_reward: 50
+  retrieve_order_component_reward: 1
+  produce_order_component_reward: 1
+  produce_ordered_item_reward: 1
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 7
+soundtrack:
+  - turning-up-the-heat
+  - galaxy-famous-chef
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: V
+      name: catalog/equipment/stove
+    - symbol: R
+      name: catalog/equipment/pan
+  storages:
+    - symbol: B
+      food_name: catalog/food/bun
+    - symbol: M
+      food_name: catalog/food/meat
+  foods:
+    - name: catalog/food/bun
+    - name: catalog/food/meat
+    - name: catalog/food/grilled_meat
+    - name: catalog/food/hamburger
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: e
+    - symbol: "2"
+      orientation: w
+
+recipes:
+  cook:
+    - ingredient: catalog/food/meat
+      with: catalog/equipment/pan
+      to_make: catalog/food/grilled_meat
+  combine:
+    - ingredients: [catalog/food/bun, catalog/food/grilled_meat]
+      to_make: catalog/food/hamburger

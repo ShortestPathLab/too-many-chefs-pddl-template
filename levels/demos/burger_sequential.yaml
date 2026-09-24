@@ -1,0 +1,71 @@
+name: "Burgers: one ticket at a time"
+description: "Pass ingredients between two work areas and complete each burger to reveal the next ticket."
+
+layout: |-
+  | M | VR| -p| - |   | B | -p|
+  |   | 1 |   | - |   | 2 |   |
+  |   |   |   | - |   |   |   |
+  | X |   |   | - |   |   | * |
+
+state:
+  orders:
+    - catalog/food/hamburger
+    - catalog/food/hamburger
+
+rules:
+  order_reveal: sequential
+
+appearance:
+  background: 4
+  floor_type: 17
+  wall_type: 1
+  counter_wood_variant: 2
+
+scoring:
+  default_order_reward: 50
+  retrieve_order_component_reward: 1
+  produce_order_component_reward: 1
+  produce_ordered_item_reward: 1
+
+soundtrack:
+  - we-can-cook-together-side-a
+  - we-can-cook-together-side-b
+  - digital-kitchen-side-b
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: V
+      name: catalog/equipment/stove
+    - symbol: R
+      name: catalog/equipment/pan
+  storages:
+    - symbol: B
+      food_name: catalog/food/bun
+    - symbol: M
+      food_name: catalog/food/meat
+  foods:
+    - name: catalog/food/bun
+    - name: catalog/food/meat
+    - name: catalog/food/grilled_meat
+    - name: catalog/food/hamburger
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: e
+    - symbol: "2"
+      orientation: w
+
+recipes:
+  cook:
+    - ingredient: catalog/food/meat
+      with: catalog/equipment/pan
+      to_make: catalog/food/grilled_meat
+  combine:
+    - ingredients: [catalog/food/bun, catalog/food/grilled_meat]
+      to_make: catalog/food/hamburger

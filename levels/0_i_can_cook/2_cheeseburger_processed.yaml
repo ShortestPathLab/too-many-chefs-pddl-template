@@ -1,0 +1,58 @@
+name: "Cheeseburger: ready to assemble"
+description: "Combine the cooked patty, bun, and sliced cheese waiting on the counters, then plate and serve."
+
+layout: |-
+  |   | -g| -b| -s| -p| * |
+  |   | 1 |   |   |   |   |
+  |   |   |   |   |   | X |
+
+state:
+  orders:
+    - catalog/food/cheeseburger
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 4
+soundtrack:
+  - low-key-cooking-side-a
+  - low-key-cooking-side-b
+  - digital-kitchen-side-a
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  foods:
+    - symbol: g
+      name: catalog/food/grilled_meat
+    - symbol: b
+      name: catalog/food/bun
+    - symbol: s
+      name: catalog/food/sliced_cheese
+    - name: catalog/food/bun_cheese
+    - name: catalog/food/patty_cheese
+    - name: catalog/food/hamburger
+    - name: catalog/food/cheeseburger
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: n
+
+recipes:
+  cook: []
+  combine:
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/bun]
+      to_make: catalog/food/bun_cheese
+    - ingredients: [catalog/food/bun, catalog/food/grilled_meat]
+      to_make: catalog/food/hamburger
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/patty_cheese
+    - ingredients: [catalog/food/bun_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/hamburger, catalog/food/sliced_cheese]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/patty_cheese, catalog/food/bun]
+      to_make: catalog/food/cheeseburger

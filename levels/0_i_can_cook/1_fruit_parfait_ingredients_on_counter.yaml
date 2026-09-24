@@ -1,0 +1,63 @@
+name: "Fruit parfait: ingredients laid out"
+description: "Use the raw fruit and yoghurt on the counters to prepare a parfait from scratch."
+
+layout: |-
+  |   | -w| -a| -y| -/| -p| * |
+  |   | 1 |   |   |   |   |   |
+  |   |   |   |   |   |   | X |
+
+state:
+  orders:
+    - catalog/food/fruit_parfait
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 8
+soundtrack:
+  - low-key-cooking-side-a
+  - low-key-cooking-side-b
+  - digital-kitchen-side-a
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+  foods:
+    - symbol: w
+      name: catalog/food/watermelon
+    - symbol: a
+      name: catalog/food/pineapple
+    - symbol: y
+      name: catalog/food/yoghurt
+    - name: catalog/food/chopped_watermelon
+    - name: catalog/food/chopped_pineapple
+    - name: catalog/food/fruit_salad
+    - name: catalog/food/fruit_parfait
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: n
+
+recipes:
+  cook:
+    - ingredient: catalog/food/watermelon
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_watermelon
+    - ingredient: catalog/food/pineapple
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_pineapple
+  combine:
+    - ingredients:
+        - catalog/food/chopped_watermelon
+        - catalog/food/chopped_pineapple
+      to_make: catalog/food/fruit_salad
+    - ingredients:
+        - catalog/food/fruit_salad
+        - catalog/food/yoghurt
+      to_make: catalog/food/fruit_parfait

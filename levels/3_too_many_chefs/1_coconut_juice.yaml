@@ -1,0 +1,58 @@
+name: "Coconut juice: 2v2"
+description: "Two teams juice coconuts on their own side and race to one delivery hatch."
+
+layout: |-
+  | - | C | -/| - | * | - | -/| C | - |
+  |   |   |   |   |   |   |   |   |   |
+  | D | 1 |   |   |   |   |   | 3 | D |
+  | - | 2 |   |   |   |   |   | 4 | - |
+  | - | X | - | - | - | - | - | X | - |
+
+state:
+  orders:
+    - catalog/food/coconut_juice
+rules:
+  infinite_orders: true
+  order_seed: 0
+  max_visible_orders: 3
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 3
+soundtrack:
+  - turning-up-the-heat
+legend:
+  counters:
+    - symbol: "-"
+  plate_dispensers:
+    - symbol: D
+      infinite_supply: true
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+  storages:
+    - symbol: C
+      food_name: catalog/food/coconut
+  foods:
+    - name: catalog/food/coconut
+    - name: catalog/food/coconut_juice
+  deliveries:
+    - symbol: "*"
+  agents:
+    - { symbol: "1", name: Ada, orientation: e }
+    - { symbol: "2", name: Bo, orientation: e }
+    - { symbol: "3", name: Cyd, orientation: w }
+    - { symbol: "4", name: Dev, orientation: w }
+
+teams:
+  reds: [Ada, Bo]
+  blues: [Cyd, Dev]
+
+recipes:
+  cook:
+    - ingredient: catalog/food/coconut
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/coconut_juice
+  combine: []

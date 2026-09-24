@@ -1,0 +1,145 @@
+# `verb` is what an order ticket prints for a step at this station, so it wants
+# to be the shortest word that says what happens to the food there.
+#
+# `sound` is what the station plays when it works on food. Write it as one
+# filename, a list of interchangeable takes, or `{clips: [...], gain, jitter}`
+# when the level wants to set the level and the pitch spread too. Paths are
+# relative to assets/audio. Equipment with no sound falls back to a generic one.
+#
+# `cook_time` and `cooks_by_itself` only apply in levels with
+# `rules.timed_cooking`. A station that cooks by itself finishes `cook_time`
+# steps after food goes in. Any other station needs `cook_time` presses of the
+# cook action, one if it sets no time. Without the rule, every station cooks
+# with one press.
+- name: catalog/equipment/cutboard
+  verb: Chop
+  cook_time: 3
+  sound:
+    clips: [card-slide-4.ogg]
+    gain: 0.5
+    jitter: 0.07
+  sprite:
+    - x: 208
+      y: 4656
+      shift_y: -16
+      sheet: "interiors.png"
+    - x: 224
+      y: 4672
+      shift_y: -16
+      sheet: "interiors.png"
+- name: catalog/equipment/stove
+  verb: Heat
+  sound: [impactPlate_medium_004.ogg, impactPlate_medium_003.ogg]
+  sprite:
+    - x: 128
+      y: 4288
+      height: 32
+      shift_y: -13
+      sheet: "interiors.png"
+- name: catalog/equipment/pan
+  verb: Grill
+  requires: catalog/equipment/stove
+  can_pick_up: true
+  cook_time: 4
+  cooks_by_itself: true
+  sound: [impactPlate_medium_004.ogg, impactPlate_medium_003.ogg]
+  sprite:
+    - x: 0
+      y: 16
+      width: 32
+      shift_y: -14
+      sheet: "custom.png"
+- name: catalog/equipment/pot
+  verb: Boil
+  requires: catalog/equipment/stove
+  can_pick_up: true
+  cook_time: 6
+  cooks_by_itself: true
+  display_food: callout
+  sound: [impactPlate_medium_004.ogg, impactPlate_medium_003.ogg]
+  sprite:
+    - x: 0
+      y: 112
+      height: 16
+      shift_y: -16
+      sheet: "custom.png"
+- name: catalog/equipment/oven
+  verb: Bake
+  cook_time: 8
+  cooks_by_itself: true
+  display_food: callout
+  sound:
+    clips: [impactPlate_medium_000.ogg]
+    jitter: 0.04
+  sprite:
+    - x: 0
+      y: 0
+      height: 32
+      shift_y: -13
+      sheet: "oven.png"
+  on_food_in:
+    frames: 6
+    sprite:
+      - x: 0
+        y: 0
+        shift_y: -13
+        height: 32
+        sheet: "oven.png"
+  on_food_out:
+    frames: 6
+    sprite:
+      - x: 0
+        y: 0
+        shift_y: -13
+        height: 32
+        sheet: "oven.png"
+- name: catalog/equipment/deep_fryer
+  verb: Fry
+  cook_time: 5
+  cooks_by_itself: true
+  display_food: callout
+  sound: [impactPlate_medium_000.ogg, impactPlate_medium_001.ogg]
+  sprite:
+    - x: 48
+      y: 4640
+      height: 32
+      width: 48
+      shift_y: -13
+      shift_x: -16
+      sheet: "interiors.png"
+- name: catalog/equipment/mixer
+  verb: Mix
+  sound: [impactPlate_medium_004.ogg, impactPlate_medium_003.ogg]
+  # `sprite` is the base, drawn under whatever is set down here. `overlay` is
+  # the head, drawn over it. The bowl below lands between the two.
+  sprite:
+    - x: 48
+      y: 154
+      width: 20
+      height: 8
+      shift_x: 0
+      shift_y: -10
+      sheet: "custom.png"
+  overlay:
+    - x: 48
+      y: 136
+      width: 20
+      height: 18
+      shift_x: 0
+      shift_y: -26
+      sheet: "custom.png"
+- name: catalog/equipment/mixing_bowl
+  verb: Mix
+  requires: catalog/equipment/mixer
+  can_pick_up: true
+  cook_time: 3
+  cooks_by_itself: true
+  display_food: callout
+  sound: [impactPlate_medium_004.ogg, impactPlate_medium_003.ogg]
+  # Sits on the mixer base rather than on the floor, so the head has somewhere
+  # to come down onto.
+  sprite:
+    - x: 16
+      y: 112
+      shift_y: -20
+      sheet: "custom.png"

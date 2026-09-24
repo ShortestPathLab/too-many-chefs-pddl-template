@@ -1,0 +1,51 @@
+name: "Coconut juice: limited ingredients"
+description: "Serve three juices using one prepared portion and two raw coconuts. There are no replacement ingredients."
+
+# Three orders: one prepared juice, two loose coconuts, with no replenishing storage.
+layout: |-
+  | -j| -c|-/ |   | -p| -p| -p|
+  |   |   |   | 1 |   | * |   |
+  | -c|   |   |   |   | X |   |
+
+state:
+  orders:
+    - catalog/food/coconut_juice
+    - catalog/food/coconut_juice
+    - catalog/food/coconut_juice
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 8
+soundtrack:
+  - low-key-cooking-side-a
+  - low-key-cooking-side-b
+  - digital-kitchen-side-a
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+  foods:
+    - symbol: c
+      name: catalog/food/coconut
+    - symbol: j
+      name: catalog/food/coconut_juice
+      raw: false
+      deliverable: true
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: s
+
+recipes:
+  cook:
+    - ingredient: catalog/food/coconut
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/coconut_juice
+  combine: []

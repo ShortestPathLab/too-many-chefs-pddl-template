@@ -1,0 +1,41 @@
+name: "Coconut juice: ready to serve"
+description: "Pick up the prepared coconut juice from the counter, plate it, and deliver it."
+
+layout: |-
+  |   | -j| -p| * |
+  |   | 1 |   |   |
+  |   |   |   | X |
+
+state:
+  orders:
+    - catalog/food/coconut_juice
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 3
+soundtrack:
+  - low-key-cooking-side-a
+  - low-key-cooking-side-b
+  - digital-kitchen-side-a
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  foods:
+    - symbol: j
+      name: catalog/food/coconut_juice
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: n
+
+recipes:
+  cook:
+    - ingredient: catalog/food/coconut
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/coconut_juice
+  combine: []

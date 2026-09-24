@@ -1,0 +1,87 @@
+name: "Sushi and rice bowls: four work areas (4 chefs)"
+description: "Coordinate four separate work areas, passing food between chefs to complete each order."
+
+layout: |-
+  |SO | R |   |   | - | F |-/ |-p |   |
+  |   | 1 |   |   | - |   | 2 |   |   |
+  |   |   |   |   |-p |   |   |   |   |
+  | - | - |-p | - |   | - | - | - | - |
+  | N |   |   |   | - |   |SP |-p |   |
+  |   | 3 |   |   |-p |   | 4 |   |   |
+  | X |   |   |   | - |   |   |   | * |
+
+state:
+  orders:
+    - catalog/food/sushi
+    - catalog/food/fish_and_rice_bowl
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 0
+soundtrack:
+  - we-can-cook-together-side-a
+  - we-can-cook-together-side-b
+  - digital-kitchen-side-b
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: O
+      name: catalog/equipment/pot
+    - symbol: P
+      name: catalog/equipment/pan
+    - symbol: S
+      name: catalog/equipment/stove
+    - symbol: /
+      name: catalog/equipment/cutboard
+  storages:
+    - symbol: R
+      food_name: catalog/food/rice
+    - symbol: N
+      food_name: catalog/food/nori
+    - symbol: F
+      food_name: catalog/food/fish
+  foods:
+    - name: catalog/food/rice
+    - name: catalog/food/nori
+    - name: catalog/food/fish
+    - name: catalog/food/cooked_rice
+    - name: catalog/food/grilled_fish
+    - name: catalog/food/sliced_fish
+    - name: catalog/food/nigiri
+    - name: catalog/food/sushi
+    - name: catalog/food/fish_and_rice_bowl
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: s
+    - symbol: "2"
+      orientation: s
+    - symbol: "3"
+      orientation: n
+    - symbol: "4"
+      orientation: n
+
+recipes:
+  cook:
+    - ingredient: catalog/food/rice
+      with: catalog/equipment/pot
+      to_make: catalog/food/cooked_rice
+    - ingredient: catalog/food/fish
+      with: catalog/equipment/pan
+      to_make: catalog/food/grilled_fish
+    - ingredient: catalog/food/fish
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/sliced_fish
+  combine:
+    - ingredients: [catalog/food/cooked_rice, catalog/food/sliced_fish]
+      to_make: catalog/food/nigiri
+    - ingredients: [catalog/food/nigiri, catalog/food/nori]
+      to_make: catalog/food/sushi
+    - ingredients: [catalog/food/cooked_rice, catalog/food/grilled_fish]
+      to_make: catalog/food/fish_and_rice_bowl

@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "too-many-chefs"
+version = "0.1.0"
+description = "A grid-based cooking simulator for building and evaluating planning controllers."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Kevin Zheng", email = "kevin.zheng@monash.edu" }]
+requires-python = ">=3.14"
+dependencies = [
+    "nicegui>=3.0.0",
+    "pydantic>=2.11.5",
+    "pyyaml>=6.0",
+    "rich>=13.0.0",
+    "typer>=0.16.0",
+]
+
+[project.optional-dependencies]
+# Native window support on Linux, macOS, and Windows. WSL uses a Windows browser.
+native = ["pywebview>=5.0"]
+
+# One PDDL planner per extra. Fast Downward and SymK do not install on ARM Linux;
+# pyperplan is the portable option.
+fast-downward = ["up-fast-downward>=0.5.2"]
+pyperplan = ["pyperplan>=2.1"]
+symk = ["up-symk>=1.6.0"]
+solvers = ["too-many-chefs[fast-downward,pyperplan,symk]"]
+
+[project.scripts]
+cook = "main:main"
+
+[tool.setuptools]
+packages = [
+    "cli",
+    "simulator",
+    "controllers",
+]
+py-modules = ["main"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = ["--strict-markers", "--strict-config"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.0",
+    "ty>=0.0.64",
+]

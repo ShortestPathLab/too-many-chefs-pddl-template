@@ -1,0 +1,49 @@
+name: "Coconut juice: two chefs"
+description: "Share a compact kitchen as two chefs prepare and serve coconut juice."
+
+layout: |-
+  |   |   |-/ |   | -p| -p|   |
+  | C | 1 |   |   | 2 |   | * |
+  |   |   |   |   |   | X |   |
+
+state:
+  orders:
+    - catalog/food/coconut_juice
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 6
+soundtrack:
+  - we-can-cook-together-side-a
+  - we-can-cook-together-side-b
+  - digital-kitchen-side-b
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+  storages:
+    - symbol: C
+      food_name: catalog/food/coconut
+  foods:
+    - name: catalog/food/coconut
+    - name: catalog/food/coconut_juice
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: s
+    - symbol: "2"
+      orientation: s
+
+recipes:
+  cook:
+    - ingredient: catalog/food/coconut
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/coconut_juice
+  combine: []

@@ -1,0 +1,61 @@
+name: "Burgers: shared stations (2 chefs)"
+description: "Share the cooking equipment and coordinate access to each preparation stage."
+
+layout: |-
+  |   | B | M | VR| -p| -p| * |
+  |   | 1 |   |   |   | 2 |   |
+  |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   | X |
+
+state:
+  orders:
+    - catalog/food/hamburger
+    - catalog/food/hamburger
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 4
+soundtrack:
+  - we-can-cook-together-side-a
+  - we-can-cook-together-side-b
+  - digital-kitchen-side-b
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: V
+      name: catalog/equipment/stove
+    - symbol: R
+      name: catalog/equipment/pan
+  storages:
+    - symbol: B
+      food_name: catalog/food/bun
+    - symbol: M
+      food_name: catalog/food/meat
+  foods:
+    - name: catalog/food/bun
+    - name: catalog/food/meat
+    - name: catalog/food/grilled_meat
+    - name: catalog/food/hamburger
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: n
+      name: "1"
+    - symbol: "2"
+      orientation: n
+      name: "2"
+
+recipes:
+  cook:
+    - ingredient: catalog/food/meat
+      with: catalog/equipment/pan
+      to_make: catalog/food/grilled_meat
+  combine:
+    - ingredients: [catalog/food/bun, catalog/food/grilled_meat]
+      to_make: catalog/food/hamburger

@@ -1,0 +1,76 @@
+name: "Chicken and chips: across the counter (3 chefs)"
+description: "Work in separate areas and pass ingredients and prepared food across the dividing counter."
+
+layout: |-
+  |   | O | C |   | -p| - |   | P | -/| D | -p|   |
+  |   |   |   |   |   | - |   |   |   |   |   |   |
+  |   |   | 1 |   |   | - |   |   | 3 |   |   |   |
+  |   |   |   |   |   | - |   |   |   |   |   |   |
+  |   |   | 2 |   |   | - |   |   |   |   |   |   |
+  |   |   |   |   |   | - |   |   |   |   |   |   |
+  |   |   |   |   |   | - |   |   |   |   |   |   |
+  |   | X |   |   |   | - |   |   |   |   | * |   |
+  |   |   |   |   |   | - |   |   |   |   |   |   |
+
+state:
+  orders:
+    - catalog/food/chicken_and_chips
+    - catalog/food/chicken_and_chips
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 4
+soundtrack:
+  - we-can-cook-together-side-a
+  - we-can-cook-together-side-b
+  - digital-kitchen-side-b
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+    - symbol: O
+      name: catalog/equipment/oven
+    - symbol: D
+      name: catalog/equipment/deep_fryer
+  storages:
+    - symbol: C
+      food_name: catalog/food/chicken
+    - symbol: P
+      food_name: catalog/food/potato
+  foods:
+    - name: catalog/food/chicken
+    - name: catalog/food/potato
+    - name: catalog/food/oven_chicken
+    - name: catalog/food/chopped_potato
+    - name: catalog/food/chips
+    - name: catalog/food/chicken_and_chips
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: s
+    - symbol: "2"
+      orientation: n
+    - symbol: "3"
+      orientation: s
+
+recipes:
+  cook:
+    - ingredient: catalog/food/chicken
+      with: catalog/equipment/oven
+      to_make: catalog/food/oven_chicken
+    - ingredient: catalog/food/potato
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_potato
+    - ingredient: catalog/food/chopped_potato
+      with: catalog/equipment/deep_fryer
+      to_make: catalog/food/chips
+  combine:
+    - ingredients: [catalog/food/oven_chicken, catalog/food/chips]
+      to_make: catalog/food/chicken_and_chips

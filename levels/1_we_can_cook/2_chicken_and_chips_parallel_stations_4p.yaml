@@ -1,0 +1,80 @@
+name: "Chicken and chips: parallel stations (4 chefs)"
+description: "Use parallel work areas to prepare several orders at once."
+
+layout: |-
+  |   | O | C | -/| P | D | -p| D | P | -/| C | O |   |
+  |   |   |   |   |   |   |   |   |   |   |   |   |   |
+  |   |   | 1 |   | 2 |   |   |   | 3 |   | 4 |   |   |
+  |   |   |   |   |   |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |   |   |   |   |   |
+  |   | X |   |   |   | * | -p| * |   |   |   | X |   |
+  |   |   |   |   | -p|   |   |   | -p|   |   |   |   |
+
+state:
+  orders:
+    - catalog/food/chicken_and_chips
+    - catalog/food/chicken_and_chips
+    - catalog/food/chicken_and_chips
+    - catalog/food/chicken_and_chips
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 1
+soundtrack:
+  - we-can-cook-together-side-a
+  - we-can-cook-together-side-b
+  - digital-kitchen-side-b
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+    - symbol: O
+      name: catalog/equipment/oven
+    - symbol: D
+      name: catalog/equipment/deep_fryer
+  storages:
+    - symbol: C
+      food_name: catalog/food/chicken
+    - symbol: P
+      food_name: catalog/food/potato
+  foods:
+    - name: catalog/food/chicken
+    - name: catalog/food/potato
+    - name: catalog/food/oven_chicken
+    - name: catalog/food/chopped_potato
+    - name: catalog/food/chips
+    - name: catalog/food/chicken_and_chips
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: s
+    - symbol: "2"
+      orientation: s
+    - symbol: "3"
+      orientation: s
+    - symbol: "4"
+      orientation: s
+
+recipes:
+  cook:
+    - ingredient: catalog/food/chicken
+      with: catalog/equipment/oven
+      to_make: catalog/food/oven_chicken
+    - ingredient: catalog/food/potato
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_potato
+    - ingredient: catalog/food/chopped_potato
+      with: catalog/equipment/deep_fryer
+      to_make: catalog/food/chips
+  combine:
+    - ingredients: [catalog/food/oven_chicken, catalog/food/chips]
+      to_make: catalog/food/chicken_and_chips

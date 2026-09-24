@@ -1,0 +1,69 @@
+name: "Carrot salad: two teams (2v2)"
+description: "An ingredient defined in the level file, and two teams keeping separate scores in one kitchen."
+
+layout: |-
+  | 1 |   | K |   | K |   | 3 |
+  |   |   |-/ |   |-/ |   |   |
+  | -p|   |   | * |   |   | -p|
+  |   |   | X |   | X |   |   |
+  | 2 |   |   |   |   |   | 4 |
+
+state:
+  orders:
+    - carrot_salad
+    - carrot_salad
+
+rules:
+  infinite_orders: true
+
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  deliveries:
+    - symbol: "*"
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+  storages:
+    - symbol: K
+      food_name: carrot
+  foods:
+    # Defined here, not in the catalogue.
+    - name: carrot
+      sprite:
+        - x: 96
+          y: 112
+          sheet: food.png
+    - name: carrot_salad
+      raw: false
+      sprite:
+        - x: 0
+          y: 64
+          sheet: food.png
+  agents:
+    - { symbol: "1", name: Ada, orientation: e }
+    - { symbol: "2", name: Bo, orientation: e }
+    - { symbol: "3", name: Cyd, orientation: w }
+    - { symbol: "4", name: Dev, orientation: w }
+
+teams:
+  reds: [Ada, Bo]
+  blues: [Cyd, Dev]
+
+recipes:
+  cook:
+    - ingredient: carrot
+      with: catalog/equipment/cutboard
+      to_make: carrot_salad
+  combine: []
+
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 5
+soundtrack:
+  - turning-up-the-heat

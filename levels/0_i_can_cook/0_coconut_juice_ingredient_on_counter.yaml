@@ -1,0 +1,45 @@
+name: "Coconut juice: start chopping"
+description: "Take the coconut from the counter, chop it into juice, then plate and serve."
+
+layout: |-
+  |   | -c| -/| -p| * |
+  |   | 1 |   |   |   |
+  |   |   |   |   | X |
+
+state:
+  orders:
+    - catalog/food/coconut_juice
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 3
+soundtrack:
+  - low-key-cooking-side-a
+  - low-key-cooking-side-b
+  - digital-kitchen-side-a
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+  foods:
+    - symbol: c
+      name: catalog/food/coconut
+    - name: catalog/food/coconut_juice
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: n
+
+recipes:
+  cook:
+    - ingredient: catalog/food/coconut
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/coconut_juice
+  combine: []

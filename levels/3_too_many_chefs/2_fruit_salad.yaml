@@ -1,0 +1,70 @@
+name: "Fruit salad: 2v2"
+description: "Chop two fruits and combine them into a salad. Each team has its own storages and boards, and the counters in the middle belong to whoever gets there first."
+
+layout: |-
+  | - | W | P | -/| - | * | - | -/| P | W | - |
+  |   |   |   |   |   |   |   |   |   |   |   |
+  | D | 1 |   |   | - | - | - |   |   | 3 | D |
+  | - | 2 |   |   |   |   |   |   |   | 4 | - |
+  | - | X | - | -/| - | - | - | -/| - | X | - |
+
+state:
+  orders:
+    - catalog/food/fruit_salad
+rules:
+  infinite_orders: true
+  order_seed: 0
+  max_visible_orders: 3
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 3
+soundtrack:
+  - turning-up-the-heat
+legend:
+  counters:
+    - symbol: "-"
+  plate_dispensers:
+    - symbol: D
+      infinite_supply: true
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+  storages:
+    - symbol: W
+      food_name: catalog/food/watermelon
+    - symbol: P
+      food_name: catalog/food/pineapple
+  foods:
+    - name: catalog/food/watermelon
+    - name: catalog/food/pineapple
+    - name: catalog/food/chopped_watermelon
+    - name: catalog/food/chopped_pineapple
+    - name: catalog/food/fruit_salad
+  deliveries:
+    - symbol: "*"
+  agents:
+    - { symbol: "1", name: Ada, orientation: e }
+    - { symbol: "2", name: Bo, orientation: e }
+    - { symbol: "3", name: Cyd, orientation: w }
+    - { symbol: "4", name: Dev, orientation: w }
+
+teams:
+  reds: [Ada, Bo]
+  blues: [Cyd, Dev]
+
+recipes:
+  cook:
+    - ingredient: catalog/food/watermelon
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_watermelon
+    - ingredient: catalog/food/pineapple
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_pineapple
+  combine:
+    - ingredients:
+        - catalog/food/chopped_watermelon
+        - catalog/food/chopped_pineapple
+      to_make: catalog/food/fruit_salad

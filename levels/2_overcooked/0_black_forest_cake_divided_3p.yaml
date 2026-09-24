@@ -1,0 +1,111 @@
+name: "Black forest cake: across the counter (3 chefs)"
+description: "Work in separate areas and pass ingredients and prepared food across the dividing counter."
+
+layout: |-
+  |   | E | F | R | -MB| - |   | C | -/| O | -p| -p|   |
+  |   |   |   |   |   | - |   |   |   |   |   |   |   |
+  |   |   | 1 |   |   | - |   |   | 3 |   |   |   |   |
+  |   |   |   |   |   | - |   |   |   |   |   |   |   |
+  |   | Y |   | 2 |   | - |   |   |   |   |   |   |   |
+  |   |   |   |   |   | - |   |   |   |   |   |   |   |
+  |   |   |   |   |   | - |   |   |   |   |   |   |   |
+  |   |   |   |   |   | - |   |   |   |   |   |   |   |
+  |   | X |   |   |   | - |   |   |   |   |   | * |   |
+  |   |   |   |   |   | - |   |   |   |   |   |   |   |
+
+state:
+  orders:
+    - catalog/food/black_forest_cake
+    - catalog/food/black_forest_cake
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 5
+soundtrack:
+  - turning-up-the-heat
+  - galaxy-famous-chef
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+    - symbol: M
+      name: catalog/equipment/mixer
+    - symbol: B
+      name: catalog/equipment/mixing_bowl
+    - symbol: O
+      name: catalog/equipment/oven
+  storages:
+    - symbol: E
+      food_name: catalog/food/egg
+    - symbol: F
+      food_name: catalog/food/flour
+    - symbol: R
+      food_name: catalog/food/cream
+    - symbol: C
+      food_name: catalog/food/chocolate
+    - symbol: Y
+      food_name: catalog/food/cherry
+  foods:
+    - name: catalog/food/egg
+    - name: catalog/food/flour
+    - name: catalog/food/cream
+    - name: catalog/food/chocolate
+    - name: catalog/food/cherry
+    - name: catalog/food/chopped_chocolate
+    - name: catalog/food/egg_flour_mix
+    - name: catalog/food/egg_cream_mix
+    - name: catalog/food/cream_flour_mix
+    - name: catalog/food/batter_ingredients
+    - name: catalog/food/batter
+    - name: catalog/food/cake
+    - name: catalog/food/cherry_cake
+    - name: catalog/food/chocolate_cake
+    - name: catalog/food/black_forest_cake
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: s
+    - symbol: "2"
+      orientation: n
+    - symbol: "3"
+      orientation: s
+
+recipes:
+  cook:
+    - ingredient: catalog/food/chocolate
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_chocolate
+    - ingredient: catalog/food/batter_ingredients
+      with: catalog/equipment/mixing_bowl
+      to_make: catalog/food/batter
+    - ingredient: catalog/food/batter
+      with: catalog/equipment/oven
+      to_make: catalog/food/cake
+  combine:
+    - ingredients: [catalog/food/egg, catalog/food/flour]
+      to_make: catalog/food/egg_flour_mix
+    - ingredients: [catalog/food/egg, catalog/food/cream]
+      to_make: catalog/food/egg_cream_mix
+    - ingredients: [catalog/food/cream, catalog/food/flour]
+      to_make: catalog/food/cream_flour_mix
+    - ingredients: [catalog/food/egg_flour_mix, catalog/food/cream]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/egg_cream_mix, catalog/food/flour]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/cream_flour_mix, catalog/food/egg]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/cake, catalog/food/chopped_chocolate]
+      to_make: catalog/food/chocolate_cake
+    - ingredients: [catalog/food/cake, catalog/food/cherry]
+      to_make: catalog/food/cherry_cake
+    - ingredients: [catalog/food/chocolate_cake, catalog/food/cherry]
+      to_make: catalog/food/black_forest_cake
+    - ingredients: [catalog/food/cherry_cake, catalog/food/chopped_chocolate]
+      to_make: catalog/food/black_forest_cake

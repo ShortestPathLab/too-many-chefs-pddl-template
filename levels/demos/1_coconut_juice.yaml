@@ -1,0 +1,53 @@
+name: "Coconut juice: endless service"
+description: "One chef, orders that keep coming, and two plates that cycle back through the dispenser."
+
+layout: |-
+  |   |   |-/ |   | - |   |   |
+  |   | C |   | 1 |   | * |   |
+  |   | D |   |   |   | X |   |
+
+state:
+  orders:
+    - catalog/food/coconut_juice
+
+rules:
+  infinite_orders: true
+  max_visible_orders: 2
+
+legend:
+  counters:
+    - symbol: "-"
+  plate_dispensers:
+    - symbol: D
+      plate_count: 2
+  bins:
+    - symbol: X
+  deliveries:
+    - symbol: "*"
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+  storages:
+    - symbol: C
+      food_name: catalog/food/coconut
+  foods:
+    - name: catalog/food/coconut
+    - name: catalog/food/coconut_juice
+  agents:
+    - symbol: "1"
+      orientation: s
+
+recipes:
+  cook:
+    - ingredient: catalog/food/coconut
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/coconut_juice
+  combine: []
+
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 3
+soundtrack:
+  - low-key-cooking-side-a
+  - digital-kitchen-side-a

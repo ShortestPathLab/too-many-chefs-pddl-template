@@ -1,0 +1,91 @@
+name: "Burgers: 2v2"
+description: "Grill, slice and stack hamburgers and cheeseburgers. Each team has a full set of stations on its side of the long counter, which chefs can work from either side; the delivery hatch and the middle counters are shared."
+
+layout: |-
+  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+  |   | B | M | C | -/| VR| - | * | - | VR| -/| C | M | B |   |
+  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+  | D | 1 |   |   |   |   | - | - | - |   |   |   |   | 3 | D |
+  | - | 2 |   |   |   |   |   |   |   |   |   |   |   | 4 | - |
+  | - | X | - | - | - | - | - | - | - | - | - | - | - | X | - |
+
+state:
+  orders:
+    - catalog/food/hamburger
+    - catalog/food/cheeseburger
+rules:
+  infinite_orders: true
+  order_seed: 0
+  max_visible_orders: 3
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 3
+soundtrack:
+  - turning-up-the-heat
+  - galaxy-famous-chef
+legend:
+  counters:
+    - symbol: "-"
+  plate_dispensers:
+    - symbol: D
+      infinite_supply: true
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+    - symbol: V
+      name: catalog/equipment/stove
+    - symbol: R
+      name: catalog/equipment/pan
+  storages:
+    - symbol: C
+      food_name: catalog/food/cheese
+    - symbol: B
+      food_name: catalog/food/bun
+    - symbol: M
+      food_name: catalog/food/meat
+  foods:
+    - name: catalog/food/cheese
+    - name: catalog/food/sliced_cheese
+    - name: catalog/food/bun
+    - name: catalog/food/meat
+    - name: catalog/food/grilled_meat
+    - name: catalog/food/bun_cheese
+    - name: catalog/food/patty_cheese
+    - name: catalog/food/hamburger
+    - name: catalog/food/cheeseburger
+  deliveries:
+    - symbol: "*"
+  agents:
+    - { symbol: "1", name: Ada, orientation: e }
+    - { symbol: "2", name: Bo, orientation: e }
+    - { symbol: "3", name: Cyd, orientation: w }
+    - { symbol: "4", name: Dev, orientation: w }
+
+teams:
+  reds: [Ada, Bo]
+  blues: [Cyd, Dev]
+
+recipes:
+  cook:
+    - ingredient: catalog/food/cheese
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/sliced_cheese
+    - ingredient: catalog/food/meat
+      with: catalog/equipment/pan
+      to_make: catalog/food/grilled_meat
+  combine:
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/bun]
+      to_make: catalog/food/bun_cheese
+    - ingredients: [catalog/food/bun, catalog/food/grilled_meat]
+      to_make: catalog/food/hamburger
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/patty_cheese
+    - ingredients: [catalog/food/bun_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/hamburger, catalog/food/sliced_cheese]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/patty_cheese, catalog/food/bun]
+      to_make: catalog/food/cheeseburger

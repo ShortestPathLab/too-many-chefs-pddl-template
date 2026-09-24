@@ -1,0 +1,369 @@
+# Watermelon
+- name: catalog/food/watermelon
+  sprite:
+    - x: 32
+      y: 80
+      sheet: "food.png"
+
+# Pineapple
+- name: catalog/food/pineapple
+  sprite:
+    - x: 16
+      y: 48
+      sheet: "food.png"
+
+# Chopped fruit
+- name: catalog/food/chopped_watermelon
+  raw: false
+  sprite:
+    - x: 64
+      y: 0
+      sheet: "custom.png"
+- name: catalog/food/chopped_pineapple
+  raw: false
+  sprite:
+    - x: 80
+      y: 0
+      sheet: "custom.png"
+
+# Fruit salad
+- name: catalog/food/fruit_salad
+  sprite:
+    - x: 0
+      y: 0
+      sheet: "custom.png"
+
+# Yoghurt
+- name: catalog/food/yoghurt
+  sprite:
+    - x: 96
+      y: 0
+      sheet: "custom.png"
+
+# Fruit parfait
+- name: catalog/food/fruit_parfait
+  sprite:
+    # The glass is the tallest food in the catalog and sits low on a counter
+    # without the lift.
+    - x: 32
+      y: 16
+      shift_y: -3
+      sheet: "custom.png"
+
+# Cheese
+- name: catalog/food/cheese
+  sprite:
+    - x: 160
+      y: 32
+      sheet: "food.png"
+- name: catalog/food/sliced_cheese
+  raw: false
+  sprite:
+    - x: 144
+      y: 16
+      sheet: "food.png"
+
+# Burger
+- name: catalog/food/bun
+  sprite:
+    - x: 96
+      y: 32
+      sheet: "food.png"
+- name: catalog/food/meat
+  sprite:
+    - x: 16
+      y: 32
+      sheet: "food.png"
+- name: catalog/food/grilled_meat
+  raw: false
+  sprite:
+    - x: 16
+      y: 16
+      sheet: "food.png"
+- name: catalog/food/bun_cheese
+  sprite:
+    - x: 48
+      y: 0
+      sheet: "custom.png"
+- name: catalog/food/patty_cheese
+  sprite:
+    - x: 16
+      y: 16
+      shift_y: 1
+      sheet: "food.png"
+    - x: 144
+      y: 16
+      shift_y: -1
+      sheet: "food.png"
+- name: catalog/food/hamburger
+  sprite:
+    - x: 128
+      y: 48
+      sheet: "food.png"
+- name: catalog/food/cheeseburger
+  sprite:
+    - x: 144
+      y: 48
+      sheet: "food.png"
+
+# Coconut
+- name: catalog/food/coconut
+  sprite:
+    - x: 32
+      y: 48
+      sheet: "food.png"
+- name: catalog/food/coconut_juice
+  raw: false
+  sprite:
+    - x: 336
+      y: 160
+      sheet: "food.png"
+
+# Salad
+- name: catalog/food/tomato
+  sprite:
+    - x: 192
+      y: 544
+      sheet: "food.png"
+- name: catalog/food/lettuce
+  sprite:
+    - x: 208
+      y: 560
+      sheet: "food.png"
+- name: catalog/food/chopped_tomato
+  raw: false
+  sprite:
+    - x: 48
+      y: 128
+      sheet: "food.png"
+- name: catalog/food/chopped_lettuce
+  raw: false
+  sprite:
+    - x: 64
+      y: 128
+      sheet: "food.png"
+- name: catalog/food/plate_chopped_tomato
+  raw: false
+  sprite:
+    - x: 80
+      y: 128
+      sheet: "food.png"
+- name: catalog/food/plate_chopped_lettuce
+  raw: false
+  sprite:
+    - x: 96
+      y: 128
+      sheet: "food.png"
+- name: catalog/food/plate_salad
+  sprite:
+    - x: 112
+      y: 128
+      sheet: "food.png"
+
+# Sushi
+- name: catalog/food/rice
+  sprite:
+    - x: 16
+      y: 32
+      sheet: "custom.png"
+- name: catalog/food/nori
+  sprite:
+    - x: 48
+      y: 48
+      sheet: "custom.png"
+- name: catalog/food/fish
+  sprite:
+    - x: 144
+      y: 192
+      sheet: "food.png"
+- name: catalog/food/cooked_rice
+  raw: false
+  sprite:
+    - x: 416
+      y: 240
+      sheet: "food.png"
+- name: catalog/food/grilled_fish
+  raw: false
+  sprite:
+    - x: 176
+      y: 192
+      sheet: "food.png"
+- name: catalog/food/sliced_fish
+  raw: false
+  sprite:
+    - x: 400
+      y: 128
+      sheet: "food.png"
+- name: catalog/food/nigiri
+  sprite:
+    - x: 400
+      y: 144
+      sheet: "food.png"
+- name: catalog/food/sushi
+  sprite:
+    - x: 400
+      y: 160
+      sheet: "food.png"
+- name: catalog/food/fish_and_rice_bowl
+  raw: false
+  sprite:
+    - x: 416
+      y: 240
+      sheet: "food.png"
+    - x: 176
+      y: 192
+      sheet: "food.png"
+
+# Chicken and chips
+- name: catalog/food/chicken
+  sprite:
+    - x: 208
+      y: 16
+      sheet: "food.png"
+- name: catalog/food/potato
+  sprite:
+    - x: 112
+      y: 64
+      sheet: "food.png"
+- name: catalog/food/oven_chicken
+  raw: false
+  sprite:
+    - x: 192
+      y: 16
+      sheet: "food.png"
+- name: catalog/food/chopped_potato
+  raw: false
+  sprite:
+    - x: 16
+      y: 0
+      sheet: "custom.png"
+- name: catalog/food/chips
+  raw: false
+  sprite:
+    - x: 32
+      y: 0
+      sheet: "custom.png"
+- name: catalog/food/chicken_and_chips
+  sprite:
+    - x: 32
+      y: 0
+      sheet: "custom.png"
+      shift_x: 1
+      shift_y: 2
+    - x: 192
+      y: 16
+      shift_x: -2
+      sheet: "food.png"
+# Black forest cake
+- name: catalog/food/egg
+  sprite:
+    - x: 288
+      y: 128
+      sheet: "food.png"
+- name: catalog/food/flour
+  sprite:
+    - x: 128
+      y: 96
+      sheet: "food.png"
+- name: catalog/food/cream
+  sprite:
+    - x: 240
+      y: 160
+      sheet: "food.png"
+- name: catalog/food/chocolate
+  sprite:
+    - x: 208
+      y: 80
+      sheet: "food.png"
+- name: catalog/food/chopped_chocolate
+  raw: false
+  sprite:
+    - x: 336
+      y: 0
+      sheet: "food.png"
+- name: catalog/food/cherry
+  sprite:
+    - x: 48
+      y: 96
+      sheet: "custom.png"
+- name: catalog/food/egg_flour_mix
+  sprite:
+    # Flour goes behind despite being named second. It is the widest of the
+    # three base sprites, so in front it covers all but a sliver of the egg.
+    - x: 128
+      y: 96
+      shift_x: -2
+      sheet: "food.png"
+    - x: 288
+      y: 128
+      shift_x: 2
+      sheet: "food.png"
+- name: catalog/food/egg_cream_mix
+  sprite:
+    - x: 288
+      y: 128
+      shift_x: -2
+      sheet: "food.png"
+    - x: 240
+      y: 160
+      shift_x: 2
+      sheet: "food.png"
+- name: catalog/food/cream_flour_mix
+  sprite:
+    # Flour behind here too, for the same reason it goes behind the egg.
+    - x: 128
+      y: 96
+      shift_x: -2
+      sheet: "food.png"
+    - x: 240
+      y: 160
+      shift_x: 2
+      sheet: "food.png"
+# Flour and cream sit at the back, the egg in front, so all three still read at
+# HUD size. A row of three would bury whichever one landed in the middle.
+- name: catalog/food/batter_ingredients
+  sprite:
+    - x: 128
+      y: 96
+      shift_x: -3
+      shift_y: -1
+      sheet: "food.png"
+    - x: 240
+      y: 160
+      shift_x: 3
+      shift_y: -1
+      sheet: "food.png"
+    - x: 288
+      y: 128
+      shift_y: 3
+      sheet: "food.png"
+- name: catalog/food/batter
+  raw: false
+  sprite:
+    - x: 32
+      y: 112
+      sheet: "custom.png"
+- name: catalog/food/cake
+  raw: false
+  sprite:
+    - x: 32
+      y: 96
+      sheet: "custom.png"
+- name: catalog/food/cherry_cake
+  raw: false
+  sprite:
+    - x: 32
+      y: 80
+      sheet: "custom.png"
+- name: catalog/food/chocolate_cake
+  raw: false
+  sprite:
+    - x: 0
+      y: 96
+      sheet: "custom.png"
+- name: catalog/food/black_forest_cake
+  raw: false
+  sprite:
+    - x: 16
+      y: 96
+      sheet: "custom.png"

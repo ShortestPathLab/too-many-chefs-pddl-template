@@ -1,0 +1,73 @@
+name: "Fruit parfait: two chefs"
+description: "Split the chopping between two chefs, then combine the fruit and yoghurt into a parfait."
+
+layout: |-
+  | -p|   |   | Y |   |   |   |   | - |
+  |   |   | 1 |   |   |   |   |   |   |
+  | -p|   |   |   |   |   |   |   |   |
+  |   |   |   | 2 | -/|   | B |   |   |
+  |   |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   | W |   |   |
+  | P |   |   |   | * |   |   |   | - |
+
+state:
+  orders:
+    - catalog/food/fruit_parfait
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 8
+soundtrack:
+  - we-can-cook-together-side-a
+  - we-can-cook-together-side-b
+  - digital-kitchen-side-b
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: B
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+  storages:
+    - symbol: W
+      food_name: catalog/food/watermelon
+    - symbol: P
+      food_name: catalog/food/pineapple
+    - symbol: Y
+      food_name: catalog/food/yoghurt
+  foods:
+    - name: catalog/food/watermelon
+    - name: catalog/food/pineapple
+    - name: catalog/food/yoghurt
+    - name: catalog/food/chopped_watermelon
+    - name: catalog/food/chopped_pineapple
+    - name: catalog/food/fruit_salad
+    - name: catalog/food/fruit_parfait
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: s
+    - symbol: "2"
+      orientation: s
+
+recipes:
+  cook:
+    - ingredient: catalog/food/watermelon
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_watermelon
+    - ingredient: catalog/food/pineapple
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_pineapple
+  combine:
+    - ingredients:
+        - catalog/food/chopped_watermelon
+        - catalog/food/chopped_pineapple
+      to_make: catalog/food/fruit_salad
+    - ingredients:
+        - catalog/food/fruit_salad
+        - catalog/food/yoghurt
+      to_make: catalog/food/fruit_parfait

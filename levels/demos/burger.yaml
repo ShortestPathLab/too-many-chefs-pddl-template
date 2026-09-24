@@ -1,0 +1,83 @@
+name: "Burger kitchen"
+description: "Grill patties and slice cheese to assemble hamburgers and cheeseburgers."
+
+layout: |-
+  |   |   | - | /-| VR| -p| -p|   |
+  |   | 1 |   |   |   |   |   | * |
+  |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   | - |
+  |   |   | B | M | C |   |   |   |
+  |   |   |   |   |   |   | X |   |
+  |   |   |   | - |   |   |   |   |
+
+state:
+  orders:
+    - catalog/food/hamburger
+    - catalog/food/cheeseburger
+appearance:
+  floor_type: -1
+  wall_type: -1
+  background: 4
+soundtrack:
+  - low-key-cooking-side-a
+  - low-key-cooking-side-b
+  - digital-kitchen-side-a
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+    - symbol: V
+      name: catalog/equipment/stove
+    - symbol: R
+      name: catalog/equipment/pan
+  storages:
+    - symbol: C
+      food_name: catalog/food/cheese
+    - symbol: B
+      food_name: catalog/food/bun
+    - symbol: M
+      food_name: catalog/food/meat
+  foods:
+    - name: catalog/food/cheese
+    - name: catalog/food/sliced_cheese
+    - name: catalog/food/bun
+    - name: catalog/food/meat
+    - name: catalog/food/grilled_meat
+    - name: catalog/food/bun_cheese
+    - name: catalog/food/patty_cheese
+    - name: catalog/food/hamburger
+    - name: catalog/food/cheeseburger
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: s
+      name: "Alfred"
+
+recipes:
+  cook:
+    - ingredient: catalog/food/cheese
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/sliced_cheese
+    - ingredient: catalog/food/meat
+      with: catalog/equipment/pan
+      to_make: catalog/food/grilled_meat
+  combine:
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/bun]
+      to_make: catalog/food/bun_cheese
+    - ingredients: [catalog/food/bun, catalog/food/grilled_meat]
+      to_make: catalog/food/hamburger
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/patty_cheese
+    - ingredients: [catalog/food/bun_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/hamburger, catalog/food/sliced_cheese]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/patty_cheese, catalog/food/bun]
+      to_make: catalog/food/cheeseburger

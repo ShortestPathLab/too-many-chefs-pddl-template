@@ -1,0 +1,125 @@
+name: "Black forest cake: mid-service (2 chefs)"
+description: "Take over a kitchen halfway through service. A cake is already baked, the batter is half mixed, the stores are empty, and most of the plates need washing."
+
+# Nothing here starts from scratch, and nothing can. A finished cake sits in the
+# oven, cream and flour are already mixed on the counter, Ada is holding the
+# only egg and Bo one of the two cherries. There are no egg, flour, cream or
+# cherry storages, so the second cake has to come from exactly what is left.
+# Only one plate is clean: the dispenser holds two dirty ones and a third waits
+# by the sink.
+#
+# Leaving out those storages also keeps the contest grader's maximum honest. It
+# pays each order the best-tipping route, and with storages to hand that would
+# be baking both cakes from scratch rather than using the one in the oven.
+layout: |-
+  | - | - | - | -MB| - | C | -/| - | Ok| -y|
+  |   | 1 |   |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   | 2 |   |   |
+  | -m|   |   |   |   |   |   |   |   | * |
+  |   |   |   |   |   |   |   |   |   |   |
+  | -q| - | S | - | X |   | -p|   |   | D |
+
+state:
+  orders:
+    - food: catalog/food/black_forest_cake
+      time_limit: 65
+    - food: catalog/food/black_forest_cake
+      time_limit: 175
+appearance:
+  background: 2
+soundtrack:
+  - galaxy-famous-chef
+  - turning-up-the-heat
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+    - symbol: q
+      dirty: true
+  plate_dispensers:
+    - symbol: D
+      plate_count: 0
+      dirty_plate_count: 2
+      returns_dirty: true
+  sinks:
+    - symbol: S
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+    - symbol: M
+      name: catalog/equipment/mixer
+    - symbol: B
+      name: catalog/equipment/mixing_bowl
+    - symbol: O
+      name: catalog/equipment/oven
+  storages:
+    - symbol: C
+      food_name: catalog/food/chocolate
+  foods:
+    - name: catalog/food/egg
+    - name: catalog/food/flour
+    - name: catalog/food/cream
+    - name: catalog/food/chocolate
+    - symbol: y
+      name: catalog/food/cherry
+    - name: catalog/food/chopped_chocolate
+    - name: catalog/food/egg_flour_mix
+    - name: catalog/food/egg_cream_mix
+    - symbol: m
+      name: catalog/food/cream_flour_mix
+    - name: catalog/food/batter_ingredients
+    - name: catalog/food/batter
+    - symbol: k
+      name: catalog/food/cake
+    - name: catalog/food/cherry_cake
+    - name: catalog/food/chocolate_cake
+    - name: catalog/food/black_forest_cake
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      name: Ada
+      orientation: s
+      held_item:
+        name: catalog/food/egg
+    - symbol: "2"
+      name: Bo
+      orientation: s
+      held_item:
+        name: catalog/food/cherry
+
+recipes:
+  cook:
+    - ingredient: catalog/food/chocolate
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_chocolate
+    - ingredient: catalog/food/batter_ingredients
+      with: catalog/equipment/mixing_bowl
+      to_make: catalog/food/batter
+    - ingredient: catalog/food/batter
+      with: catalog/equipment/oven
+      to_make: catalog/food/cake
+  combine:
+    - ingredients: [catalog/food/egg, catalog/food/flour]
+      to_make: catalog/food/egg_flour_mix
+    - ingredients: [catalog/food/egg, catalog/food/cream]
+      to_make: catalog/food/egg_cream_mix
+    - ingredients: [catalog/food/cream, catalog/food/flour]
+      to_make: catalog/food/cream_flour_mix
+    - ingredients: [catalog/food/egg_flour_mix, catalog/food/cream]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/egg_cream_mix, catalog/food/flour]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/cream_flour_mix, catalog/food/egg]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/cake, catalog/food/chopped_chocolate]
+      to_make: catalog/food/chocolate_cake
+    - ingredients: [catalog/food/cake, catalog/food/cherry]
+      to_make: catalog/food/cherry_cake
+    - ingredients: [catalog/food/chocolate_cake, catalog/food/cherry]
+      to_make: catalog/food/black_forest_cake
+    - ingredients: [catalog/food/cherry_cake, catalog/food/chopped_chocolate]
+      to_make: catalog/food/black_forest_cake

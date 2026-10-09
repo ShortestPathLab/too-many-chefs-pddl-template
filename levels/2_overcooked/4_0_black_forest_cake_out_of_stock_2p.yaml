@@ -1,0 +1,150 @@
+name: "Black forest cake: out of stock (2 chefs)"
+description: "Four tickets, but only two cherries and no meat delivery today. Serve what the kitchen can still make."
+
+# Not every order can be filled. The cherries are two loose ones with no
+# storage behind them, so only two of the three cakes can be finished, and
+# there is no meat anywhere, so the cheeseburger never can. A controller that
+# insists on planning for every ticket finds no plan at all. The contest
+# grader leaves orders with no route out of the level's maximum, so this needs
+# no override there.
+layout: |-
+  | E | F | - |-MB| - | C | -/| O | - | - |
+  |   |   |   |   |   |   |   |   |   | - |
+  | R | 1 |   |   |   |   |   |   | 2 | - |
+  |   |   |   |   |   |   |   |   |   | - |
+  | -y|   |   |   |   |   |   |   |   | * |
+  |   |   |   |   |   |   |   |   |   | - |
+  | X | U | K |-VP| -p| -p| -p| -y| - | - |
+
+state:
+  orders:
+    - food: catalog/food/black_forest_cake
+      time_limit: 120
+    - food: catalog/food/cheeseburger
+      time_limit: 195
+    - food: catalog/food/black_forest_cake
+      time_limit: 195
+    - food: catalog/food/black_forest_cake
+      time_limit: 195
+appearance:
+  background: 1
+soundtrack:
+  - galaxy-famous-chef
+  - turning-up-the-heat
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+    - symbol: M
+      name: catalog/equipment/mixer
+    - symbol: B
+      name: catalog/equipment/mixing_bowl
+    - symbol: O
+      name: catalog/equipment/oven
+    - symbol: V
+      name: catalog/equipment/stove
+    - symbol: P
+      name: catalog/equipment/pan
+  storages:
+    - symbol: E
+      food_name: catalog/food/egg
+    - symbol: F
+      food_name: catalog/food/flour
+    - symbol: R
+      food_name: catalog/food/cream
+    - symbol: C
+      food_name: catalog/food/chocolate
+    - symbol: U
+      food_name: catalog/food/bun
+    - symbol: K
+      food_name: catalog/food/cheese
+  foods:
+    - name: catalog/food/egg
+    - name: catalog/food/flour
+    - name: catalog/food/cream
+    - name: catalog/food/chocolate
+    - symbol: y
+      name: catalog/food/cherry
+    - name: catalog/food/chopped_chocolate
+    - name: catalog/food/egg_flour_mix
+    - name: catalog/food/egg_cream_mix
+    - name: catalog/food/cream_flour_mix
+    - name: catalog/food/batter_ingredients
+    - name: catalog/food/batter
+    - name: catalog/food/cake
+    - name: catalog/food/cherry_cake
+    - name: catalog/food/chocolate_cake
+    - name: catalog/food/black_forest_cake
+    - name: catalog/food/bun
+    - name: catalog/food/cheese
+    - name: catalog/food/meat
+    - name: catalog/food/grilled_meat
+    - name: catalog/food/sliced_cheese
+    - name: catalog/food/bun_cheese
+    - name: catalog/food/patty_cheese
+    - name: catalog/food/hamburger
+    - name: catalog/food/cheeseburger
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: s
+    - symbol: "2"
+      orientation: s
+
+recipes:
+  cook:
+    - ingredient: catalog/food/chocolate
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_chocolate
+    - ingredient: catalog/food/batter_ingredients
+      with: catalog/equipment/mixing_bowl
+      to_make: catalog/food/batter
+    - ingredient: catalog/food/batter
+      with: catalog/equipment/oven
+      to_make: catalog/food/cake
+    - ingredient: catalog/food/cheese
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/sliced_cheese
+    - ingredient: catalog/food/meat
+      with: catalog/equipment/pan
+      to_make: catalog/food/grilled_meat
+  combine:
+    - ingredients: [catalog/food/egg, catalog/food/flour]
+      to_make: catalog/food/egg_flour_mix
+    - ingredients: [catalog/food/egg, catalog/food/cream]
+      to_make: catalog/food/egg_cream_mix
+    - ingredients: [catalog/food/cream, catalog/food/flour]
+      to_make: catalog/food/cream_flour_mix
+    - ingredients: [catalog/food/egg_flour_mix, catalog/food/cream]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/egg_cream_mix, catalog/food/flour]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/cream_flour_mix, catalog/food/egg]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/cake, catalog/food/chopped_chocolate]
+      to_make: catalog/food/chocolate_cake
+    - ingredients: [catalog/food/cake, catalog/food/cherry]
+      to_make: catalog/food/cherry_cake
+    - ingredients: [catalog/food/chocolate_cake, catalog/food/cherry]
+      to_make: catalog/food/black_forest_cake
+    - ingredients: [catalog/food/cherry_cake, catalog/food/chopped_chocolate]
+      to_make: catalog/food/black_forest_cake
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/bun]
+      to_make: catalog/food/bun_cheese
+    - ingredients: [catalog/food/bun, catalog/food/grilled_meat]
+      to_make: catalog/food/hamburger
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/patty_cheese
+    - ingredients: [catalog/food/bun_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/hamburger, catalog/food/sliced_cheese]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/patty_cheese, catalog/food/bun]
+      to_make: catalog/food/cheeseburger

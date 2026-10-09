@@ -1,0 +1,46 @@
+name: "Fruit parfait: add yoghurt"
+description: "Start with a prepared fruit salad. Add yoghurt, plate the parfait, and serve."
+
+layout: |-
+  |   | -f| Y | -p| * |
+  |   | 1 |   |   |   |
+  |   |   |   |   | X |
+
+state:
+  orders:
+    - food: catalog/food/fruit_parfait
+      time_limit: 40
+appearance:
+  background: 3
+soundtrack:
+  - low-key-cooking-side-a
+  - digital-kitchen-side-a
+  - low-key-cooking-side-b
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  storages:
+    - symbol: Y
+      food_name: catalog/food/yoghurt
+  foods:
+    - symbol: f
+      name: catalog/food/fruit_salad
+    - name: catalog/food/yoghurt
+    - name: catalog/food/fruit_parfait
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: n
+
+recipes:
+  cook: []
+  combine:
+    - ingredients:
+        - catalog/food/fruit_salad
+        - catalog/food/yoghurt
+      to_make: catalog/food/fruit_parfait

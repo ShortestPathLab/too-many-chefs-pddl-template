@@ -1,0 +1,60 @@
+name: "Stoves and ovens"
+description: "A stove's burners sit on a counter, or on an oven in the same cell. Grill two hamburgers on any of the pans."
+
+# Each stove here shares its cell with a counter or an oven, and the oven on
+# its own shows its plain top. Any pan works, on a counter or on an oven.
+layout: |-
+  | T | U | - |-VA| - | O | - |OVA| - |-VS| - |
+  |   |   |   |   |   |   |   |   |   |   |   |
+  |   | 1 |   |   |   |   |   |   |   |   | * |
+  |   |   |   |   |   |   |   |   |   |   |   |
+  | X | -p| -p| - |   |OVS|   |   |   |   |   |
+
+state:
+  orders:
+    - catalog/food/hamburger
+    - catalog/food/hamburger
+appearance:
+  background: 3
+soundtrack:
+  - low-key-cooking-side-a
+legend:
+  counters:
+    - symbol: "-"
+  plates:
+    - symbol: p
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: V
+      name: catalog/equipment/stove
+    - symbol: A
+      name: catalog/equipment/pan
+    - symbol: S
+      name: catalog/equipment/pot
+    - symbol: O
+      name: catalog/equipment/oven
+  storages:
+    - symbol: T
+      food_name: catalog/food/meat
+    - symbol: U
+      food_name: catalog/food/bun
+  foods:
+    - name: catalog/food/meat
+    - name: catalog/food/grilled_meat
+    - name: catalog/food/bun
+    - name: catalog/food/hamburger
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: s
+
+recipes:
+  cook:
+    - ingredient: catalog/food/meat
+      with: catalog/equipment/pan
+      to_make: catalog/food/grilled_meat
+  combine:
+    - ingredients: [catalog/food/bun, catalog/food/grilled_meat]
+      to_make: catalog/food/hamburger

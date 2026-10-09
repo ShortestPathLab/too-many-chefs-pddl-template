@@ -1,0 +1,278 @@
+name: "The full menu: 2v2"
+description: "Every dish from the earlier kitchens, from coconut juice to black forest cake. Each team has its own stores and benches, and both cook at the shared row of stations down the middle, where the hatch is."
+
+# A kitchen split along its length. Reds work from the top half and blues from
+# the bottom, each with all seventeen stores, a plate dispenser, a bin and
+# three benches, one with a spare pot. The row down the middle is shared and
+# can be reached from both halves: three cutboards, five cookers (each an oven
+# with a stove on top; two hold pans, one a pot, and two are bare), a fryer, a
+# mixer with its bowl, and the hatch. With three cutboards and several stoves,
+# a team that hogs stations slows the other down rather than stopping it. Both
+# ends of the middle row are open, and so are the tiles either side of the
+# hatch, so either team can walk into the other's half.
+#
+# Every recipe from the planning parts is on the menu. Tickets pay and
+# expire by how long the dish takes, so picking which tickets to chase is
+# part of the game. Cooking is timed: the cutboard takes three chops, and the
+# other stations cook by themselves while the chefs get on with something
+# else.
+layout: |-
+  | E | L | Q | C | Z | K | T | H | U | D | X | R | F | N | P | G | W | I | Y |
+  |   |   |   |   |   | 1 |   |   |   |   |   |   |   | 2 |   |   |   |   |   |
+  |   |   | - | -S|   |   |   |   | - | - | - |   |   |   |   | - | - |   |   |
+  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+  |   | - |-MB| - |OV | -/|OVA| -/|   | * |   |OVS| -/|OVA| - | J | - |OV |   |
+  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+  |   |   | - | -S|   |   |   |   | - | - | - |   |   |   |   | - | - |   |   |
+  |   |   |   |   |   | 3 |   |   |   |   |   |   |   | 4 |   |   |   |   |   |
+  | E | L | Q | C | Z | K | T | H | U | D | X | R | F | N | P | G | W | I | Y |
+state:
+  orders:
+    - food: catalog/food/coconut_juice
+      reward: 20
+      time_limit: 50
+    - food: catalog/food/fruit_salad
+      reward: 30
+      time_limit: 60
+    - food: catalog/food/fruit_parfait
+      reward: 40
+      time_limit: 80
+    - food: catalog/food/hamburger
+      reward: 30
+      time_limit: 70
+    - food: catalog/food/cheeseburger
+      reward: 50
+      time_limit: 90
+    - food: catalog/food/fish_and_rice_bowl
+      reward: 40
+      time_limit: 90
+    - food: catalog/food/sushi
+      reward: 60
+      time_limit: 110
+    - food: catalog/food/chicken_and_chips
+      reward: 60
+      time_limit: 110
+    - food: catalog/food/black_forest_cake
+      reward: 100
+      time_limit: 180
+rules:
+  infinite_orders: true
+  order_seed: 0
+  max_visible_orders: 3
+  timed_cooking: true
+appearance:
+  background: 10
+soundtrack:
+  - turning-up-the-heat
+  - galaxy-famous-chef
+legend:
+  counters:
+    - symbol: "-"
+  plate_dispensers:
+    - symbol: D
+      infinite_supply: true
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+    - symbol: V
+      name: catalog/equipment/stove
+    - symbol: S
+      name: catalog/equipment/pot
+    - symbol: A
+      name: catalog/equipment/pan
+    - symbol: O
+      name: catalog/equipment/oven
+    - symbol: J
+      name: catalog/equipment/deep_fryer
+    - symbol: M
+      name: catalog/equipment/mixer
+    - symbol: B
+      name: catalog/equipment/mixing_bowl
+  storages:
+    - symbol: K
+      food_name: catalog/food/coconut
+    - symbol: W
+      food_name: catalog/food/watermelon
+    - symbol: I
+      food_name: catalog/food/pineapple
+    - symbol: Y
+      food_name: catalog/food/yoghurt
+    - symbol: E
+      food_name: catalog/food/egg
+    - symbol: L
+      food_name: catalog/food/flour
+    - symbol: Q
+      food_name: catalog/food/cream
+    - symbol: C
+      food_name: catalog/food/chocolate
+    - symbol: Z
+      food_name: catalog/food/cherry
+    - symbol: U
+      food_name: catalog/food/bun
+    - symbol: T
+      food_name: catalog/food/meat
+    - symbol: H
+      food_name: catalog/food/cheese
+    - symbol: R
+      food_name: catalog/food/rice
+    - symbol: N
+      food_name: catalog/food/nori
+    - symbol: F
+      food_name: catalog/food/fish
+    - symbol: G
+      food_name: catalog/food/chicken
+    - symbol: P
+      food_name: catalog/food/potato
+  foods:
+    - name: catalog/food/coconut
+    - name: catalog/food/coconut_juice
+    - name: catalog/food/watermelon
+    - name: catalog/food/pineapple
+    - name: catalog/food/yoghurt
+    - name: catalog/food/chopped_watermelon
+    - name: catalog/food/chopped_pineapple
+    - name: catalog/food/fruit_salad
+    - name: catalog/food/fruit_parfait
+    - name: catalog/food/bun
+    - name: catalog/food/meat
+    - name: catalog/food/cheese
+    - name: catalog/food/grilled_meat
+    - name: catalog/food/sliced_cheese
+    - name: catalog/food/bun_cheese
+    - name: catalog/food/patty_cheese
+    - name: catalog/food/hamburger
+    - name: catalog/food/cheeseburger
+    - name: catalog/food/rice
+    - name: catalog/food/nori
+    - name: catalog/food/fish
+    - name: catalog/food/cooked_rice
+    - name: catalog/food/grilled_fish
+    - name: catalog/food/sliced_fish
+    - name: catalog/food/nigiri
+    - name: catalog/food/sushi
+    - name: catalog/food/fish_and_rice_bowl
+    - name: catalog/food/chicken
+    - name: catalog/food/potato
+    - name: catalog/food/oven_chicken
+    - name: catalog/food/chopped_potato
+    - name: catalog/food/chips
+    - name: catalog/food/chicken_and_chips
+    - name: catalog/food/egg
+    - name: catalog/food/flour
+    - name: catalog/food/cream
+    - name: catalog/food/chocolate
+    - name: catalog/food/cherry
+    - name: catalog/food/chopped_chocolate
+    - name: catalog/food/egg_flour_mix
+    - name: catalog/food/egg_cream_mix
+    - name: catalog/food/cream_flour_mix
+    - name: catalog/food/batter_ingredients
+    - name: catalog/food/batter
+    - name: catalog/food/cake
+    - name: catalog/food/cherry_cake
+    - name: catalog/food/chocolate_cake
+    - name: catalog/food/black_forest_cake
+  deliveries:
+    - symbol: "*"
+  agents:
+    - { symbol: "1", name: Ada, orientation: s }
+    - { symbol: "2", name: Bo, orientation: s }
+    - { symbol: "3", name: Cyd, orientation: n }
+    - { symbol: "4", name: Dev, orientation: n }
+
+teams:
+  reds: [Ada, Bo]
+  blues: [Cyd, Dev]
+
+recipes:
+  cook:
+    - ingredient: catalog/food/coconut
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/coconut_juice
+    - ingredient: catalog/food/watermelon
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_watermelon
+    - ingredient: catalog/food/pineapple
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_pineapple
+    - ingredient: catalog/food/cheese
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/sliced_cheese
+    - ingredient: catalog/food/meat
+      with: catalog/equipment/pan
+      to_make: catalog/food/grilled_meat
+    - ingredient: catalog/food/rice
+      with: catalog/equipment/pot
+      to_make: catalog/food/cooked_rice
+    - ingredient: catalog/food/fish
+      with: catalog/equipment/pan
+      to_make: catalog/food/grilled_fish
+    - ingredient: catalog/food/fish
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/sliced_fish
+    - ingredient: catalog/food/chicken
+      with: catalog/equipment/oven
+      to_make: catalog/food/oven_chicken
+    - ingredient: catalog/food/potato
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_potato
+    - ingredient: catalog/food/chopped_potato
+      with: catalog/equipment/deep_fryer
+      to_make: catalog/food/chips
+    - ingredient: catalog/food/chocolate
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/chopped_chocolate
+    - ingredient: catalog/food/batter_ingredients
+      with: catalog/equipment/mixing_bowl
+      to_make: catalog/food/batter
+    - ingredient: catalog/food/batter
+      with: catalog/equipment/oven
+      to_make: catalog/food/cake
+  combine:
+    - ingredients:
+        [catalog/food/chopped_watermelon, catalog/food/chopped_pineapple]
+      to_make: catalog/food/fruit_salad
+    - ingredients: [catalog/food/fruit_salad, catalog/food/yoghurt]
+      to_make: catalog/food/fruit_parfait
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/bun]
+      to_make: catalog/food/bun_cheese
+    - ingredients: [catalog/food/bun, catalog/food/grilled_meat]
+      to_make: catalog/food/hamburger
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/patty_cheese
+    - ingredients: [catalog/food/bun_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/hamburger, catalog/food/sliced_cheese]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/patty_cheese, catalog/food/bun]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/cooked_rice, catalog/food/sliced_fish]
+      to_make: catalog/food/nigiri
+    - ingredients: [catalog/food/nigiri, catalog/food/nori]
+      to_make: catalog/food/sushi
+    - ingredients: [catalog/food/cooked_rice, catalog/food/grilled_fish]
+      to_make: catalog/food/fish_and_rice_bowl
+    - ingredients: [catalog/food/oven_chicken, catalog/food/chips]
+      to_make: catalog/food/chicken_and_chips
+    - ingredients: [catalog/food/egg, catalog/food/flour]
+      to_make: catalog/food/egg_flour_mix
+    - ingredients: [catalog/food/egg, catalog/food/cream]
+      to_make: catalog/food/egg_cream_mix
+    - ingredients: [catalog/food/cream, catalog/food/flour]
+      to_make: catalog/food/cream_flour_mix
+    - ingredients: [catalog/food/egg_flour_mix, catalog/food/cream]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/egg_cream_mix, catalog/food/flour]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/cream_flour_mix, catalog/food/egg]
+      to_make: catalog/food/batter_ingredients
+    - ingredients: [catalog/food/cake, catalog/food/chopped_chocolate]
+      to_make: catalog/food/chocolate_cake
+    - ingredients: [catalog/food/cake, catalog/food/cherry]
+      to_make: catalog/food/cherry_cake
+    - ingredients: [catalog/food/chocolate_cake, catalog/food/cherry]
+      to_make: catalog/food/black_forest_cake
+    - ingredients: [catalog/food/cherry_cake, catalog/food/chopped_chocolate]
+      to_make: catalog/food/black_forest_cake

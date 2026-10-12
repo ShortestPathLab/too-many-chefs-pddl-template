@@ -1,0 +1,91 @@
+name: "Cheeseburgers: dish pit (2 chefs)"
+description: "One plate for three cheeseburgers. It comes back dirty after every delivery, and the sink is at the far end of the kitchen."
+
+# One plate in the dispenser, returned dirty after each delivery. The sink and
+# the dispenser sit at opposite ends, so whoever washes up walks the length
+# of the kitchen while the other chef gets the next burger ready.
+layout: |-
+  | - | S | - | B | M | C | - | - | D |
+  |   | 1 |   |   |   |   |   |   |   |
+  |   |   |   |   |   |   |   |   |   |
+  | - |   |   |   |   |   |   | 2 | * |
+  |   |   |   |   |   |   |   |   |   |
+  | X | - | /-|-VR| - | - | - |   |   |
+
+state:
+  orders:
+    - food: catalog/food/cheeseburger
+      time_limit: 135
+    - food: catalog/food/cheeseburger
+      time_limit: 215
+    - food: catalog/food/cheeseburger
+      time_limit: 295
+appearance:
+  background: 1
+soundtrack:
+  - galaxy-famous-chef
+  - turning-up-the-heat
+legend:
+  counters:
+    - symbol: "-"
+  plate_dispensers:
+    - symbol: D
+      plate_count: 1
+      returns_dirty: true
+  sinks:
+    - symbol: S
+  bins:
+    - symbol: X
+  equipment:
+    - symbol: /
+      name: catalog/equipment/cutboard
+    - symbol: V
+      name: catalog/equipment/stove
+    - symbol: R
+      name: catalog/equipment/pan
+  storages:
+    - symbol: B
+      food_name: catalog/food/bun
+    - symbol: M
+      food_name: catalog/food/meat
+    - symbol: C
+      food_name: catalog/food/cheese
+  foods:
+    - name: catalog/food/bun
+    - name: catalog/food/meat
+    - name: catalog/food/cheese
+    - name: catalog/food/grilled_meat
+    - name: catalog/food/sliced_cheese
+    - name: catalog/food/bun_cheese
+    - name: catalog/food/patty_cheese
+    - name: catalog/food/hamburger
+    - name: catalog/food/cheeseburger
+  deliveries:
+    - symbol: "*"
+  agents:
+    - symbol: "1"
+      orientation: s
+    - symbol: "2"
+      orientation: w
+
+recipes:
+  cook:
+    - ingredient: catalog/food/cheese
+      with: catalog/equipment/cutboard
+      to_make: catalog/food/sliced_cheese
+    - ingredient: catalog/food/meat
+      with: catalog/equipment/pan
+      to_make: catalog/food/grilled_meat
+  combine:
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/bun]
+      to_make: catalog/food/bun_cheese
+    - ingredients: [catalog/food/bun, catalog/food/grilled_meat]
+      to_make: catalog/food/hamburger
+    - ingredients: [catalog/food/sliced_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/patty_cheese
+    - ingredients: [catalog/food/bun_cheese, catalog/food/grilled_meat]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/hamburger, catalog/food/sliced_cheese]
+      to_make: catalog/food/cheeseburger
+    - ingredients: [catalog/food/patty_cheese, catalog/food/bun]
+      to_make: catalog/food/cheeseburger
